@@ -1,6 +1,7 @@
 import React from 'react';
 import './HomePage.css';
 import Profile from '../../components/Profile/Profile';
+import PostsSection from '../../components/PostsSection/PostsSection';
 
 
 
@@ -8,8 +9,7 @@ const HomePage = () => {
   return (
     <div className='home'> 
     <Profile/>
-    {/* <div className='profile-side'>Profile</div> */}
-    <div className='post-side'>Posts</div>
+    <PostsSection/>
     <div className='right-side'>Right side</div>
     </div>
   )
