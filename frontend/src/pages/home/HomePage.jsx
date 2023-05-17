@@ -2,7 +2,7 @@ import React from 'react';
 import './HomePage.css';
 import Profile from '../../components/Profile/Profile';
 import PostsSection from '../../components/PostsSection/PostsSection';
-
+import RightSection from '../../components/RightSection/RightSection';
 
 
 const HomePage = () => {
@@ -10,7 +10,7 @@ const HomePage = () => {
     <div className='home'> 
     <Profile/>
     <PostsSection/>
-    <div className='right-side'>Right side</div>
+    <RightSection/>
     </div>
   )
 }
