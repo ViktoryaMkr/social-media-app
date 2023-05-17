@@ -27,3 +27,40 @@
     border: none;
     outline: none;
 }
+
+.share-options {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.option{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.postshare-button {
+    padding: 5px 20px;
+    font-size: 12px;
+}
+
+.image-preview {
+    position: relative;
+}
+
+.image-preview > svg {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    cursor: pointer;
+}
+
+.image-preview > img {
+    width: 100%;
+    max-height: 20rem;
+    object-fit: contain;
+    border-radius: 0.5rem;
+}
