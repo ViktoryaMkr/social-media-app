@@ -48,3 +48,8 @@
   background: white;
   border: solid 1px rgb(18, 164, 197);
 }
+
+::-webkit-scrollbar{
+  display: none;
+
+}
