@@ -1,0 +1,40 @@
+.search-bar {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.search {
+    height: 30px;
+    display: flex;
+    background-color: var(--inputColor);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.search > input,
+.search > input:focus {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    width: 20px;
+}
+
+.search-icon:hover {
+    cursor: pointer;
+}
+
+.profile-card > span {
+    font-weight: bold;
+    align-self: center;
+    margin-bottom: 1.2rem;
+    color: rgb(18, 164, 197);
+}
