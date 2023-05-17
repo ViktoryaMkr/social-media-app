@@ -51,19 +51,19 @@
     gap: 1rem;
 }
 
-.follower, .following {
+.followers, .following {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.follower > span:nth-last-of-type(1), .following > span:nth-last-of-type(1){
+.followers > span:nth-last-of-type(1), .following > span:nth-last-of-type(1){
     color: var(--gray);
     font-size: 13px;
 }
 
-.follower > span:nth-last-of-type(2), .following > span:nth-last-of-type(2){
+.followers > span:nth-last-of-type(2), .following > span:nth-last-of-type(2){
     font-weight: bold;
 }
 

@@ -29,3 +29,22 @@
   background: #a6ddf0;
   filter: blur(70px);
 }
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: white;
+  background: rgb(18, 164, 197);
+  border: none;
+  border-radius: 0.5rem;
+  transition: all 100ms ease-out;
+}
+
+.button:hover {
+  cursor: pointer;
+  color:  rgb(18, 164, 197);
+  background: white;
+  border: solid 1px rgb(18, 164, 197);
+}

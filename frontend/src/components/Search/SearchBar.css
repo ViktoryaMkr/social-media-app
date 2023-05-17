@@ -31,3 +31,10 @@
 .search-icon:hover {
     cursor: pointer;
 }
+
+.profile-card > span {
+    font-weight: bold;
+    align-self: center;
+    margin-bottom: 1.2rem;
+    color: rgb(18, 164, 197);
+}
