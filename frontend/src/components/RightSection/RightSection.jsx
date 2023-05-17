@@ -14,10 +14,12 @@ const RightSection = () => {
             <UilSetting/>
             <img src={Notif} alt="" />
             <img src={Comment} alt="" />
-
+        </div>
             <TrendCard/>
 
-        </div>
+            <button className='button r-button'>
+                Share
+            </button>
         
     </div>
   )
