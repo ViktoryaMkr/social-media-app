@@ -5,21 +5,23 @@ import ProfileImage from '../../../img/profileImg.jpg';
 
 
 const ProfileCard = () => {
+
+  const ProfilePage = true;
   return (
     <div className='profile-card'>
-        <div className='profile-images'>
-            <img src={Cover} alt="" height='120px'/>
-            <img src={ProfileImage} alt="" />
-        </div>
+      <div className='profile-images'>
+        <img src={Cover} alt="" height='120px' />
+        <img src={ProfileImage} alt="" />
+      </div>
 
-        <div className='profile-name'>
-          <span>Random Name</span>
-          <span>Senior Software Engineer</span>
-        </div>
+      <div className='profile-name'>
+        <span>Random Name</span>
+        <span>Senior Software Engineer</span>
+      </div>
 
-        <div className='follow-status'>
-          <hr />
-          <div>
+      <div className='follow-status'>
+        <hr />
+        <div>
           <div className='followers'>
             <span>1,645</span>
             <span>Following </span>
@@ -29,12 +31,22 @@ const ProfileCard = () => {
             <span>200</span>
             <span>Followers</span>
           </div>
-          </div>
-          <hr/>
+
+          {ProfilePage && (
+            <>
+              <div className='vertical-line'></div>
+              <div className='following'>
+                <span>3 </span>
+                <span>Posts</span>
+              </div>
+            </>
+          )}
         </div>
-        <span>
-          My profile
-        </span>
+        <hr />
+      </div>
+      {ProfilePage? '' : <span>
+        My profile
+      </span>}
     </div>
   )
 }

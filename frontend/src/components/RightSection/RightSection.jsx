@@ -4,7 +4,7 @@ import Home from "../../img/home.png";
 import Notif from "../../img/noti.png";
 import Comment from "../../img/comment.png";
 import { UilSetting } from "@iconscout/react-unicons";
-import TrendCard from '../TrendCard/TrendCard';
+import TrendCard from '../Cards/TrendCard/TrendCard';
 
 const RightSection = () => {
   return (
