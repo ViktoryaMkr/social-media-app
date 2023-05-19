@@ -42,6 +42,7 @@ function SignUp(){
         <div>
           <input className="info-input" type="text" name="confirmPassword" id="" placeholder='Confirm Password' {...register('confirmPassword')}/>
         </div>
+
       </form>
     </div>
   )

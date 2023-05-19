@@ -34,3 +34,29 @@
     -moz-text-fill-color: transparent;
 
 }
+
+.info-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.info-form > div {
+    display: flex;
+    gap: 1rem;
+    height: 2rem;
+    width: 90%;
+}
+
+.info-input {
+    border: none;
+    outline: none;
+    /* align-self: center; */
+    background-color: var(--inputColor);
+    border-radius: 8px;
+    padding: 25px;
+    flex: 1;
+    height: 0px;
+}
