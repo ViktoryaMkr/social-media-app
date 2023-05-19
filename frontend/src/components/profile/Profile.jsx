@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchBar from '../Search/SearchBar'
 import ProfileCard from '../Cards/ProfileCard/ProfileCard'
-import FollowerCard from '../FollowerCard/FollowerCard';
+import FollowerCard from '../Cards/FollowerCard/FollowerCard';
 import './Profile.css';
 
 const Profile = () => {

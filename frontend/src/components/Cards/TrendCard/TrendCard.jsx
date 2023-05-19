@@ -1,6 +1,6 @@
 import React from 'react'
 import './TrendCard.css'
-import { TrendData } from '../../MockData/MockTrendData'
+import { TrendData } from '../../../MockData/MockTrendData'
 
 
 

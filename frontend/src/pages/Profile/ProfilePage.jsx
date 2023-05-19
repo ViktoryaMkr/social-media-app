@@ -1,18 +1,23 @@
 import React from 'react'
+import './ProfilePage.css'
 import ProfileLeftSection from '../../components/Profile/ProfileLeftSection/ProfileLeftSection'
-import SearchBar from '../../components/Search/SearchBar'
-import FollowerCard from '../../components/FollowerCard/FollowerCard'
-import InfoCard from '../../components/Cards/InfoCard.jsx/InfoCard'
+import ProfileCard from '../../components/Cards/ProfileCard/ProfileCard'
+import PostsSection from '../../components/PostsSection/PostsSection'
+import RightSection from '../../components/RightSection/RightSection'
 
 
 
 const ProfilePage = () => {
   return (
-    <div className='profile-left'>
-      <SearchBar/>
-      <InfoCard/>
-      <FollowerCard/>
+    <div className='profile'>
       <ProfileLeftSection/>
+
+      <div className='profile-middle'>
+        <ProfileCard/>
+        <PostsSection/>
+      </div>
+      <RightSection/>
+
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import './FollowerCard.css'
-import { Followers } from '../../MockData/MockFollowersData'
+import { Followers } from '../../../MockData/MockFollowersData'
 
 
 const FollowerCard = () => {

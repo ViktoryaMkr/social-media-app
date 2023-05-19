@@ -1,10 +1,16 @@
 import React from 'react'
 import './ProfileLeftSection.css'
+import SearchBar from '../../Search/SearchBar'
+import InfoCard from '../../Cards/InfoCard.jsx/InfoCard'
+import FollowerCard from '../../Cards/FollowerCard/FollowerCard'
 
 const ProfileLeftSection = () => {
   return (
-    <div className=''>
-
+    <div className='profile-side'>
+      <SearchBar/>
+      <InfoCard/>
+      <FollowerCard/>
+        
     </div>
   )
 }
