@@ -1,3 +1,36 @@
+.auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 4rem;
+    position: relative;
+}
+
+.auth > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .auth-left-section {
-    
+    gap: 2rem;
+}
+
+.auth-left-section > img {
+    width: 4rem;
+}
+
+.app-name > h1 {
+    font-size: 3rem;
+    background-color: red;
+    /* background-image: linear-gradient(to right, rgb(18, 164, 197) 0%, rgb(149, 184, 199) 50%, rgb(204, 181, 170) 100%); */
+    background-image: linear-gradient(to right, rgb(147, 70, 186) 0%, rgb(255, 207, 114) 100%);
+    background-size: 100%;
+    background-repeat: repeat ;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+
 }
