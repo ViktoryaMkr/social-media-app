@@ -16,8 +16,8 @@ function App() {
         <div className="blur " style={{top: '-13%', right: '0'}}></div>
         <div className="blur " style={{top: '36%', left: '-8rem'}}></div>
         {/* <HomePage/> */}
-        {/* <ProfilePage/> */}
-          <AuthPage/>
+        <ProfilePage/>
+          {/* <AuthPage/> */}
     </div>
   );
 }
