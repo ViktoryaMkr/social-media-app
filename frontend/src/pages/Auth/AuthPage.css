@@ -32,7 +32,10 @@
     -webkit-text-fill-color: transparent;
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
+}
 
+.app-name > h6 {
+    font-size: 1rem;
 }
 
 .info-form {
@@ -78,5 +81,12 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+}
+
+.login-button {
+    width: 6rem;
+    height: 2.1rem;
+    align-self: flex-end;
+    font-size: medium;
 }
 
