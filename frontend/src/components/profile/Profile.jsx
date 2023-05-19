@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchBar from '../Search/SearchBar'
-import ProfileCard from '../ProfileCard/ProfileCard'
+import ProfileCard from '../Cards/ProfileCard/ProfileCard'
 import FollowerCard from '../FollowerCard/FollowerCard';
 import './Profile.css';
 
