@@ -60,3 +60,23 @@
     flex: 1;
     height: 0px;
 }
+
+.signup-button {
+    width: 7rem;
+    height: 3rem;
+    align-self: flex-end;
+    font-size: medium;
+}
+
+.signup-form {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.signup-form > div{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+

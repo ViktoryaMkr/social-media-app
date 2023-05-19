@@ -16,7 +16,7 @@ function SignUp(){
 
   return(
     <div>
-      <form className='info-form' onSubmit={(data) => console.log(data)}>
+      <form className='info-form signup-form' onSubmit={(data) => console.log(data)}>
         <h3>Sign up</h3>
         <div>
           <input {...register('firstName')} 
@@ -37,12 +37,18 @@ function SignUp(){
           <input className="info-input" type="text" name="username" id="" placeholder='Username' {...register('userName')}/>
         </div>
         <div>
-          <input className="info-input" type="text" name="password" id="" placeholder='Password' {...register('password')}/>
+          <input className="info-input" type="email" name="email" id="" placeholder='Email' {...register('email')}/>
         </div>
         <div>
-          <input className="info-input" type="text" name="confirmPassword" id="" placeholder='Confirm Password' {...register('confirmPassword')}/>
+          <input className="info-input" type="password" name="password" id="" placeholder='Password' {...register('password')}/>
         </div>
-
+        <div>
+          <input className="info-input" type="password" name="confirmPassword" id="" placeholder='Confirm Password' {...register('confirmPassword')}/>
+        </div>
+        <div>
+          <span style={{fontSize: '12px'}}>Already a member ? Login.</span>
+        </div>
+        <input className='button signup-button' type='submit' value="Sign up"/>
       </form>
     </div>
   )
