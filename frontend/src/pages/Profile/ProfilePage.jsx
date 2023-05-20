@@ -4,11 +4,17 @@ import ProfileLeftSection from '../../components/Profile/ProfileLeftSection/Prof
 import ProfileCard from '../../components/Cards/ProfileCard/ProfileCard'
 import PostsSection from '../../components/PostsSection/PostsSection'
 import RightSection from '../../components/RightSection/RightSection'
+import Navbar from '../../components/Navbar/Navbar'
+
 
 
 
 const ProfilePage = () => {
   return (
+    <>
+    <Navbar/>
+    <div className='main'>
+
     <div className='profile'>
       <ProfileLeftSection/>
 
@@ -19,6 +25,8 @@ const ProfilePage = () => {
       <RightSection/>
 
     </div>
+    </div>
+    </>
   )
 }
 

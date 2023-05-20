@@ -6,7 +6,7 @@ import {UilSearch} from '@iconscout/react-unicons';
 const SearchBar = () => {
   return (
     <div className='search-bar'>
-        <img src={Logo} style={{width: '70px'}}/>
+        <img src={Logo} style={{width: '60px'}}/>
         <div className='search'>
             <input type="text" placeholder='#Explore' />
             <div className='search-icon'>

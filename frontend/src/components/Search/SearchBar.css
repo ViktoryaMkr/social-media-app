@@ -14,6 +14,7 @@
 
 .search > input,
 .search > input:focus {
+    width: 250px;
     background-color: transparent;
     border: none;
     outline: none;

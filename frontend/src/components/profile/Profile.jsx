@@ -7,7 +7,7 @@ import './Profile.css';
 const Profile = () => {
   return (
     <div className='profile-side'>
-        <SearchBar/>
+        {/* <SearchBar/> */}
         <ProfileCard/>
         <FollowerCard/>
     </div>
