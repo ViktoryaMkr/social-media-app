@@ -9,6 +9,10 @@ import Dislike from '../../../img/notlike.png'
 const Post = ({ data }) => {
     return (
         <div className='post'>
+            <div className='details'>
+                <span><b>{data.name}</b></span>
+                <span>{data.desc}</span>
+            </div>
             <img src={data.img} alt="" />
             <div className='post-reaction'>
                 <img src={data.liked ? Like : Dislike} alt="" />
@@ -19,10 +23,6 @@ const Post = ({ data }) => {
                 {data.likes} Likes
             </span>
 
-            <div className='details'>
-                <span><b>{data.name}</b></span>
-                <span>{data.desc}</span>
-            </div>
         </div>
     )
 }

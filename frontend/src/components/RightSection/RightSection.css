@@ -4,13 +4,3 @@
     gap: 2rem ;
 }
 
-.nav-icons {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-.nav-icons > img {
-    width: 1.5rem;
-    height: 1.5rem;
-}

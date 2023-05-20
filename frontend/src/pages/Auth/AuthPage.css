@@ -24,8 +24,8 @@
 .app-name > h1 {
     font-size: 3rem;
     background-color: red;
-    /* background-image: linear-gradient(to right, rgb(18, 164, 197) 0%, rgb(149, 184, 199) 50%, rgb(204, 181, 170) 100%); */
-    background-image: linear-gradient(to right, rgb(147, 70, 186) 0%, rgb(255, 207, 114) 100%);
+    background-image: linear-gradient(to right, rgb(18, 164, 197) 0%, rgb(149, 184, 199) 50%, rgb(204, 181, 170) 100%);
+    /* background-image: linear-gradient(to right, rgb(147, 70, 186) 0%, rgb(255, 207, 114) 100%); */
     background-size: 100%;
     background-repeat: repeat ;
     -webkit-background-clip: text;

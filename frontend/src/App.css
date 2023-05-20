@@ -12,22 +12,29 @@
   --video: #4A4EB7;
   --location: #EF5757;
 --shedule: #E1AE4A;
+  --primary-color:rgb(18, 164, 197);
+  --secondary-color: rgb(204, 181, 170) ;
 }
 
 .App {
-  overflow: hidden;
+  /* overflow: hidden; */
   color: var(--black);
   background: #f3f3f3;
+}
+
+.main{
   padding: 1rem 1rem;
+  /* padding-top: 80px;  */
 }
 
 .blur{
   position: absolute;
-  width: 22rem;
-  height: 14rem;
-  border-radius: 50%;
-  background: #a6ddf0;
-  filter: blur(70px);
+  width: 40% ;
+  height: 20%;
+  border-radius: 30%;
+  /* background: #a6ddf0; */
+  background: var(--secondary-color);
+  filter: blur(100px);
 }
 
 .button {
@@ -36,7 +43,7 @@
   justify-content: center;
   border-radius: 12px;
   color: white;
-  background: rgb(18, 164, 197);
+  background:var(--primary-color);
   border: none;
   border-radius: 0.5rem;
   transition: all 100ms ease-out;
@@ -44,9 +51,9 @@
 
 .button:hover {
   cursor: pointer;
-  color:  rgb(18, 164, 197);
+  color:  var(--primary-color);
   background: white;
-  border: solid 1px rgb(18, 164, 197);
+  border: solid 1px var(--primary-color);
 }
 
 ::-webkit-scrollbar{
