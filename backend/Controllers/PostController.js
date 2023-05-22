@@ -33,7 +33,7 @@ export const updatePost = async(req, res) => {
 
     try {
 
-        var post = await PostModel.findById(id);
+        const post = await PostModel.findById(id);
         
         if (post.userId === userId || userAdminStatus) {
             await post.updateOne( {$set : req.body} );
@@ -53,7 +53,7 @@ export const deletePost = async(req, res) => {
 
     try {
 
-        var post = await PostModel.findById(id);
+        const post = await PostModel.findById(id);
         
         if (post.userId === userId || userAdminStatus) {
             await post.deleteOne();
@@ -65,4 +65,27 @@ export const deletePost = async(req, res) => {
     } catch (error) {
         res.status(500).json(error);
     }
+}
+
+// liked and unliked
+export const likePost = async(req, res) => {
+    const id = req.params.id;
+    const { userId } = req.body;
+
+    try {
+        const post = await PostModel.findById(id); 
+ 
+        if (!post.likes.includes(userId)){
+            await post.updateOne({$push : {likes: userId}});
+            res.status(200).json("liked");
+        }else {
+            await post.updateOne({$pull : {likes: userId}});
+            res.status(200).json("unliked");
+        }
+
+
+    } catch (error) {
+        res.status(500).json(error);
+    }
+
 }
