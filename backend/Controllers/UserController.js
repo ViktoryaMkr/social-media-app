@@ -10,8 +10,9 @@ export const getUser = async (req, res) => {
 
         if(user){
             // remove password from response
-            const {password, ...otherData} = user._doc
-            res.status(200).json(user);
+            const {password, ...noPasswordData} = user._doc
+
+            res.status(200).json(noPasswordData);
         }
     } catch (error) {
         res.status(500).json(error);
