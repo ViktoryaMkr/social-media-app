@@ -65,3 +65,28 @@ export const deleteUser = async (req, res) => {
         res.status(403).json("Action denied. You have no permission to delete this user");
     }
 }
+
+export const followUser = async (req,res) => {
+    const id = req.params.id;
+
+    const {currentUserId} = req.body;
+    if (id === currentUserId) {
+        res.status(403).json("Action denied.")
+    }
+
+    try {
+        const userFollowed = await UserModel.findById(id);
+        const userFollowing = await UserModel.findById(currentUserId);
+
+        if(!userFollowed.followers.includes(currentUserId)){
+            await userFollowed.updateOne({$push : {followers: currentUserId}});
+            await userFollowing.updateOne({$push : {followings: id}});
+            res.status(200).json("User followed")
+        }else{
+            res.status(403).json(`You are already following ${userFollowed.username}`)
+        }
+        
+    } catch (error) {
+        res.status(500).json(error);   
+    }
+}
