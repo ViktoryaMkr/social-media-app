@@ -24,6 +24,7 @@ export const getUser = async (req, res) => {
     }
 }
 
+
 // update user
 export const updateUser = async (req, res) => {
     const id = req.params.id;
@@ -49,6 +50,7 @@ export const updateUser = async (req, res) => {
     }
 }
 
+
 // delete user
 export const deleteUser = async (req, res) => {
     const id = req.params.id;
@@ -66,6 +68,7 @@ export const deleteUser = async (req, res) => {
     }
 }
 
+
 export const followUser = async (req,res) => {
     const id = req.params.id;
 
@@ -81,7 +84,7 @@ export const followUser = async (req,res) => {
         if(!userFollowed.followers.includes(currentUserId)){
             await userFollowed.updateOne({$push : {followers: currentUserId}});
             await userFollowing.updateOne({$push : {followings: id}});
-            res.status(200).json("User followed")
+            res.status(200).json(`${userFollowed.username} followed`);
         }else{
             res.status(403).json(`You are already following ${userFollowed.username}`)
         }
@@ -90,3 +93,30 @@ export const followUser = async (req,res) => {
         res.status(500).json(error);   
     }
 }
+
+
+export const unfollowUser = async (req,res) => {
+    const id = req.params.id;
+
+    const {currentUserId} = req.body;
+    if (id === currentUserId) {
+        res.status(403).json("Action denied.")
+    }
+
+    try {
+        const userUnfollowed = await UserModel.findById(id);
+        const userUnfollowing = await UserModel.findById(currentUserId);
+
+        if(userUnfollowed.followers.includes(currentUserId)){
+            await userUnfollowed.updateOne({$pull : {followers: currentUserId}});
+            await userUnfollowing.updateOne({$pull : {followings: id}});
+            res.status(200).json(`${userUnfollowed.username} unfollowed`);
+        }else{
+            res.status(403).json(`You are not following ${userUnfollowed.username}`)
+        }
+        
+    } catch (error) {
+        res.status(500).json(error);   
+    }
+}
+
