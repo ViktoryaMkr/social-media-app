@@ -45,6 +45,23 @@ export const updateUser = async (req, res) => {
             res.status(404).json(error);
         }
     }else {
-        res.status(403).json("Access denied");
+        res.status(403).json("Action denied. You have no permission to update this user");
+    }
+}
+
+// delete user
+export const deleteUser = async (req, res) => {
+    const id = req.params.id;
+
+    const { currentUserId, currentUserAdminStatus } = req.body;
+    if (id === currentUserId || currentUserAdminStatus) {
+        try {
+            await UserModel.findByIdAndDelete(id);
+            res.status(200).json("User deleted")
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }else{
+        res.status(403).json("Action denied. You have no permission to delete this user");
     }
 }
