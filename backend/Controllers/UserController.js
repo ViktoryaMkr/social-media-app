@@ -35,7 +35,7 @@ export const updateUser = async (req, res) => {
             if (password) {
 
                 const salt = await bcrypt.genSalt(10);
-                req.body.password = await bcrypt(password, salt);
+                req.body.password = await bcrypt.hash(password, salt);
             }
 
             const user = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
@@ -44,5 +44,7 @@ export const updateUser = async (req, res) => {
         } catch (error) {
             res.status(404).json(error);
         }
+    }else {
+        res.status(403).json("Access denied");
     }
 }
