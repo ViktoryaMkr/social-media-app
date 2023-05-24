@@ -18,7 +18,7 @@ function App() {
     <div className="App">
     <Routes>
       <Route path="/" element={user ? <Navigate to = 'home'/> : <Navigate to = 'login'/>} />
-      <Route path="/home" element={user? <HomePage/> : <Navigate to = '..login'/>} />
+      <Route path="/home" element={user? <HomePage/> : <Navigate to = '../login'/>} />
       {/* <Route path="/profile" element={<ProfilePage/>} /> */}
       <Route path="/login" element={user? <Navigate to = '../home'/>:<AuthPage> <Login/> </AuthPage>} />
       <Route path="/register" element={user? <Navigate to = '../home'/>:<AuthPage> <SignUp/> </AuthPage>} />
