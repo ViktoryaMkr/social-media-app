@@ -10,7 +10,7 @@ function Login() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isSubmitting },
     } = useForm();
 
     const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function Login() {
                 </div>
                 <div>
                     <span style={{ fontSize: '12px' }}>Not a member yet ? Sign up.</span>
-                    <input className='button login-button' type='submit' value="Log in" />
+                    {isSubmitting?<input className='button disabled login-button' type='submit' value="Loading..." />: <input className='button login-button' type='submit' value="Log in" />}
                 </div>
             </form>
         </div>

@@ -22,7 +22,7 @@ function SignUp() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isSubmitting  },
     } = useForm({
         resolver: yupResolver(schema)
     });
@@ -70,7 +70,7 @@ function SignUp() {
                 <div>
                     <span style={{ fontSize: '12px' }}>Already a member ? Login.</span>
                 </div>
-                <input className='button signup-button' type='submit' value="Sign up" />
+                {isSubmitting? "" : <input className='button signup-button' type='submit' value="Sign up" />}
             </form>
         </div>
     )
