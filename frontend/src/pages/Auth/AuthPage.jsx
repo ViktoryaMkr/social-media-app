@@ -17,7 +17,7 @@ const AuthPage = (props) => {
           <h6>Making Waves, Creating Buzz, Connecting You</h6>
         </div>
       </div>
-      {props.children}
+        {props.children}
     </div>
   )
 }
