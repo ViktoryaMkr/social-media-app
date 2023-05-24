@@ -9,24 +9,21 @@ import Login from "./pages/Auth/LoginPage";
 
 function App() {
 
-  const user = useSelector((state => state.auth.authData))
-  console.log(user);
+  const isLoggedIn = useSelector((state => state.auth.authData))
 
 
   return (
     <>
-    <div className="App">
-    <Routes>
-      <Route path="/" element={user ? <Navigate to = 'home'/> : <Navigate to = 'login'/>} />
-      <Route path="/home" element={user? <HomePage/> : <Navigate to = '../login'/>} />
-      {/* <Route path="/profile" element={<ProfilePage/>} /> */}
-      <Route path="/login" element={user? <Navigate to = '../home'/>:<AuthPage> <Login/> </AuthPage>} />
-      <Route path="/register" element={user? <Navigate to = '../home'/>:<AuthPage> <SignUp/> </AuthPage>} />
-    </Routes>
-
-
-    </div>
-        </>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={isLoggedIn ? <Navigate to='home' /> : <Navigate to='login' />} />
+          <Route path="/home" element={isLoggedIn ? <HomePage /> : <Navigate to='/login' replace />} />
+          <Route path="/profile" element={isLoggedIn ? <ProfilePage /> : <Navigate to='login' />} />
+          <Route path="/login" element={isLoggedIn ? <Navigate to='/home' replace /> : <AuthPage> <Login /> </AuthPage>} />
+          <Route path="/register" element={isLoggedIn ? <Navigate to='/home' replace /> : <AuthPage> <SignUp /> </AuthPage>} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
