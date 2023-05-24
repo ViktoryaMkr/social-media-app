@@ -20,12 +20,12 @@ function App() {
         {/* <HomePage/> */}
 
         {/* <ProfilePage/> */}
-          <AuthPage>
-            <SignUp/>
-          </AuthPage>
           {/* <AuthPage>
-            <Login/>
+            <SignUp/>
           </AuthPage> */}
+          <AuthPage>
+            <Login/>
+          </AuthPage>
 
     </div>
         </>
