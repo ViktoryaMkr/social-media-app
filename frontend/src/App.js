@@ -2,7 +2,6 @@ import "./App.css"
 import HomePage from "./pages/Home/HomePage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import AuthPage from "./pages/Auth/AuthPage";
-import Navbar from "./components/Navbar/Navbar";
 import SignUp from "./pages/Auth/RegisterPage";
 import Login from "./pages/Auth/LoginPage";
 
@@ -21,12 +20,12 @@ function App() {
         {/* <HomePage/> */}
 
         {/* <ProfilePage/> */}
-          <AuthPage>
-            <SignUp/>
-          </AuthPage>
           {/* <AuthPage>
-            <Login/>
+            <SignUp/>
           </AuthPage> */}
+          <AuthPage>
+            <Login/>
+          </AuthPage>
 
     </div>
         </>
