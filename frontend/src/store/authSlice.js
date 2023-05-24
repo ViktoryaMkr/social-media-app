@@ -16,7 +16,7 @@ export const authSlice = createSlice({
           },
         authSuccess(state, action) {
             console.log(action);
-            // localStorage.setItem("profile", JSON.stringify(action.payload?.data) )
+            localStorage.setItem("profile", JSON.stringify(action.payload) )
             state.authData = action.payload;
             state.loading = false;
             state.error = false;

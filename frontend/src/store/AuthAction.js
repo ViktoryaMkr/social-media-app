@@ -8,15 +8,15 @@ export const login = (formData) => async(dispatch) => {
         dispatch(auth.authSuccess(data));
     } catch (error) {
         console.log(error);
-        // dispatch()
+        dispatch(auth.authFail())
     } 
 }
 export const register = (formData) => async(dispatch) => {
     try {
         const {data} = await AuthApi.register(formData);
-        dispatch({type: "AUTH_SUCCESS", data:data})
+        dispatch(auth.authSuccess(data));
     } catch (error) {
         console.log(error);
-        dispatch({type: "AUTH_FAIL"})
+        dispatch(auth.authFail())
     } 
 }
