@@ -2,7 +2,9 @@ import React from 'react'
 import './AuthPage.css'
 import Logo from '../../img/logo1.png'
 import { useForm } from 'react-hook-form';
-
+import { login } from '../../store/AuthAction';
+import { auth } from '../../store/authSlice';
+import { useDispatch } from 'react-redux';
 
 function Login(){
     const {
@@ -10,15 +12,25 @@ function Login(){
       handleSubmit,
       formState: { errors },
     } = useForm();
+
+    const dispatch = useDispatch();
+
+
+    const handleLoginUser = data => {
+        console.log(data);
+        // console.log(loginData);
+        dispatch(login(data));
+
+    }
   
   
     return(
       <div>
-        <form className='info-form signup-form' onSubmit={(data) => console.log(data)}>
+        <form className='info-form signup-form' onSubmit={handleSubmit(handleLoginUser)}>
           <h3>Log in</h3>
           
           <div>
-            <input className="info-input" type="text" name="username" id="" placeholder='Username' {...register('userName')}/>
+            <input className="info-input" type="text" name="username" id="" placeholder='Username' {...register('username')}/>
           </div>
           <div>
             <input className="info-input" type="password" name="password" id="" placeholder='Password' {...register('password')}/>
