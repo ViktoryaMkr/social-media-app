@@ -5,12 +5,13 @@ import dotenv from 'dotenv';
 import AuthRoute from './Routes/AuthRoute.js'
 import UserRoute from './Routes/UserRoute.js'
 import PostRoute from './Routes/PostRoute.js'
+import cors from 'cors'
 const app = express();
 
 // Middleware
 app.use(bodyParser.json({limit: '30mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
-
+app.use(cors());
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_DB,
