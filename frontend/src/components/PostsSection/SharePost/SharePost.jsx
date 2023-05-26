@@ -36,11 +36,11 @@ const SharePost = () => {
 
         if(image){
             const data = new FormData();
-            const fileName = Date.now + image.name;
+            const fileName = Date.now() + image.name;
             data.append("name", fileName);
             data.append("file", image);
             newPost.image = fileName;
-            console.log(newPost);
+            // console.log(newPost);
             try {
                 dispatch(uploadImage(data));
             } catch (error) {

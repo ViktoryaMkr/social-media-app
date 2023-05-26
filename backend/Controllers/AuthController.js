@@ -26,7 +26,7 @@ export const registerUser = async(req, res)=> {
         const token = jwt.sign({
             username: newRegisteredUser.username,
             id: newRegisteredUser._id
-        }, process.env.JWT_PKEY , {expiresIn: '5000'})
+        }, process.env.JWT_PKEY , {expiresIn: '1h'})
         res.status(200).json({newRegisteredUser, token})
 
     } catch (error) {
@@ -45,7 +45,16 @@ export const loginUser = async(req, res)=> {
         if(user){
             const validPassword = await bcrypt.compare(password, user.password);
 
-            validPassword? res.status(200).json(user): res.status(400).json("Wrong Credentials");
+            if (!validPassword) {
+                res.status(400).json("Wrong Credentials");
+            } else {
+                const token = jwt.sign({
+                    username: user.username,
+                    id: user._id
+                }, process.env.JWT_PKEY , {expiresIn: '5000'})
+                res.status(200).json({user, token})
+                
+            }
         }else {
             res.status(404).json("Wrong credentials. User does not exist");
         }
