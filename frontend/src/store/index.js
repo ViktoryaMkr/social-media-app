@@ -1,5 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./authSlice";
+import uploadSlice from "./uploadSlice";
+
+
+
 import {
     legacy_createStore as createStore,
     applyMiddleware,
@@ -32,11 +36,13 @@ function loadFromLocalStorage() {
 
 const store = configureStore({
     reducer: {
-        auth: authSlice
+        auth: authSlice,
+        post: uploadSlice
     },
     preloadedState : persistedState,
     
 }, composeEnhancers(applyMiddleware(thunk)))
+
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
