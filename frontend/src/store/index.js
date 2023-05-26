@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./authSlice";
 import uploadSlice from "./uploadSlice";
-
+import postSlice from "./postSlice";
 
 
 import {
@@ -37,7 +37,8 @@ function loadFromLocalStorage() {
 const store = configureStore({
     reducer: {
         auth: authSlice,
-        post: uploadSlice
+        sharePost: uploadSlice,
+        post: postSlice
     },
     preloadedState : persistedState,
     

@@ -5,8 +5,8 @@ const initialState = {
     error: false
 }
 
-export const postSlice = createSlice({
-    name: "post",
+export const uploadSlice = createSlice({
+    name: "uploadPost",
     initialState: initialState,
     reducers: {
         sharePost(state, action) {
@@ -20,5 +20,5 @@ export const postSlice = createSlice({
     },
 });
 
-export const sharePost = postSlice.actions
-export default postSlice.reducer
+export const sharePost = uploadSlice.actions
+export default uploadSlice.reducer
