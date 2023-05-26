@@ -7,7 +7,7 @@ import { UilLocationPoint } from '@iconscout/react-unicons'
 import { UilSchedule } from '@iconscout/react-unicons'
 import { UilTimes } from '@iconscout/react-unicons'
 import { useDispatch, useSelector } from 'react-redux';
-import { uploadImage } from '../../../store/uploadAction';
+import { shareUserPost, uploadImage } from '../../../store/uploadAction';
 
 const SharePost = () => {
 
@@ -24,6 +24,10 @@ const SharePost = () => {
             let img = e.target.files[0];
             setImage(img);
         }
+    }
+    const resetPost= ()=>{
+        setImage(null);
+        postDescription.current.value=null;
     }
 
     const handleSubmit = (e) => {
@@ -48,6 +52,8 @@ const SharePost = () => {
             }
         }
 
+        dispatch(shareUserPost(newPost));
+        resetPost();
     }
 
 
