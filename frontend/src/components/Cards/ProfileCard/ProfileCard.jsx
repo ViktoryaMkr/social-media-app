@@ -8,11 +8,10 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-const ProfileCard = () => {
+const ProfileCard = ({onProfilePage}) => {
 
   const {user} = useSelector((state) => state.auth.authData)
   const publicFolder = process.env.REACT_APP_PUB;
-  const ProfilePage = false;
   return (
     <div className='profile-card'>
       <div className='profile-images'>
@@ -38,7 +37,7 @@ const ProfileCard = () => {
             <span>Followers</span>
           </div>
 
-          {ProfilePage && (
+          {onProfilePage && (
             <>
               <div className='vertical-line'></div>
               <div className='following'>
@@ -50,7 +49,7 @@ const ProfileCard = () => {
         </div>
         <hr />
       </div>
-      {ProfilePage? '' : <span>
+      {onProfilePage? '' : <span>
         <Link to = {`/profile/${user._id}`} style={{ textDecoration: "none", color: 'inherit'}}>
         My profile
         </Link>
