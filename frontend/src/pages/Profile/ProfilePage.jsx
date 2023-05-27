@@ -19,7 +19,7 @@ const ProfilePage = () => {
       <ProfileLeftSection/>
 
       <div className='profile-middle'>
-        <ProfileCard/>
+        <ProfileCard onProfilePage={true}/>
         <PostsSection/>
       </div>
       <RightSection/>
