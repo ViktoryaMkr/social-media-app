@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import './SharePost.css';
-import ShareImg from '../../../img/profileImg.jpg'
+import defaultUserImg from '../../../img/defaultUser.png'
 import { UilScenery } from '@iconscout/react-unicons'
 import { UilPlayCircle } from '@iconscout/react-unicons'
 import { UilLocationPoint } from '@iconscout/react-unicons'
@@ -16,6 +16,7 @@ const SharePost = () => {
     const postDescription = useRef();
     const [image, setImage] = useState(null);
     const { user }  = useSelector(state => state.auth.authData);
+    const publicFolder = process.env.REACT_APP_PUB;
 
 
 
@@ -60,7 +61,7 @@ const SharePost = () => {
 
     return (
         <div className='share-post'>
-            <img src={ShareImg} alt="" />
+            <img src={user.profilePicture? publicFolder + user.publicFolder : defaultUserImg } alt="" />
             <div>
                 <input type='text' placeholder='Username Express yourself' required ref={postDescription}/>
                 <div className='post-options'>
