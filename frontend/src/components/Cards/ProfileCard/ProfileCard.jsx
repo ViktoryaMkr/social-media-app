@@ -5,13 +5,14 @@ import defaultCoverImg from '../../../img/defaultCover.png';
 import ProfileImage from '../../../img/profileImg.jpg';
 import defaultUserImg from '../../../img/defaultUser.png';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 const ProfileCard = () => {
 
   const {user} = useSelector((state) => state.auth.authData)
   const publicFolder = process.env.REACT_APP_PUB;
-  const ProfilePage = true;
+  const ProfilePage = false;
   return (
     <div className='profile-card'>
       <div className='profile-images'>
@@ -50,7 +51,9 @@ const ProfileCard = () => {
         <hr />
       </div>
       {ProfilePage? '' : <span>
+        <Link to = {`/profile/${user._id}`} style={{ textDecoration: "none", color: 'inherit'}}>
         My profile
+        </Link>
       </span>}
     </div>
   )

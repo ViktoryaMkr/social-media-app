@@ -5,6 +5,7 @@ import Notif from "../../img/noti.png";
 import Comment from "../../img/comment.png";
 import { UilSetting } from "@iconscout/react-unicons";
 import "./Navbar.css"
+import { Link } from 'react-router-dom';
 
 
 
@@ -17,7 +18,9 @@ const Navbar = () => {
      
 
      <div className='nav-icons'>
+      <Link to='/'>
          <img src={Home} alt="" />
+      </Link>
          <UilSetting/>
          <img src={Notif} alt="" />
          <img src={Comment} alt="" />
