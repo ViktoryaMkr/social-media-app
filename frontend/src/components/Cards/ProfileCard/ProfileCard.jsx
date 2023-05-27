@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 const ProfileCard = ({onProfilePage}) => {
 
   const {user} = useSelector((state) => state.auth.authData)
+  const posts = useSelector(state => state.post.postData);
   const publicFolder = process.env.REACT_APP_PUB;
   return (
     <div className='profile-card'>
@@ -41,7 +42,7 @@ const ProfileCard = ({onProfilePage}) => {
             <>
               <div className='vertical-line'></div>
               <div className='following'>
-                <span>3 </span>
+                <span>{posts.filter((post)=> post.userId === user._id).length} </span>
                 <span>Posts</span>
               </div>
             </>
