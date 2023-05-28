@@ -1,2 +1,5 @@
-# ViktoryaMkr.github.io
-A project showcasing a social media app.
+# BuzzWave Network
+
+This project is currently under development and is not considered complete.
+[![Project Status](https://img.shields.io/badge/status-work_in_progress-orange.svg)](https://github.com/yourusername/yourproject)
+
