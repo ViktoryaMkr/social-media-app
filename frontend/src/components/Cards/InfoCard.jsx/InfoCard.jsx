@@ -30,6 +30,7 @@ const InfoCard = () => {
         }
       }
       fetchProfileUser();
+      console.log(profileUser);
     }, [user])
     
 
@@ -53,19 +54,19 @@ const InfoCard = () => {
                 <span>
                     <b>Status </b>
                 </span>
-                <span>{profileUser.relationshipStatus}</span>
+                <span>{profileUser?.relationshipStatus}</span>
             </div>
             <div className='info'>
                 <span>
                     <b>Location </b>
                 </span>
-                <span>{profileUser.livesin}</span>
+                <span>{profileUser?.livesin}</span>
             </div>
             <div className='info'>
                 <span>
                     <b>Work </b>
                 </span>
-                <span>{profileUser.worksat}</span>
+                <span>{profileUser?.worksat}</span>
             </div>
 
             <button className='button info-button'>button</button>
