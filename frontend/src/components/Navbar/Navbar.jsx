@@ -6,11 +6,19 @@ import Comment from "../../img/comment.png";
 import { UilSetting } from "@iconscout/react-unicons";
 import "./Navbar.css"
 import { Link } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { auth } from '../../store/authSlice.js'
 
 
 
 const Navbar = () => {
+
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(auth.logout());
+  }
+
   return (
     <div className='navbar'>
        <div className='navbar-elements'>
@@ -24,6 +32,7 @@ const Navbar = () => {
          <UilSetting/>
          <img src={Notif} alt="" />
          <img src={Comment} alt="" />
+         <span onClick={handleLogout} style={{cursor: 'pointer'}}>Log out</span>
      </div>
        </div>
 
