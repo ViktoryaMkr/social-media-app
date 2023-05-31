@@ -1,6 +1,6 @@
 import UserModel from "../Models/userModel.js";
 import bcrypt from 'bcrypt';
-
+import jwt from 'jsonwebtoken';
 
 
 // get user
@@ -28,9 +28,9 @@ export const getUser = async (req, res) => {
 // update user
 export const updateUser = async (req, res) => {
     const id = req.params.id;
-    const { currentUserId, currentUserAdminStatus, password } = req.body;
+    const { _id, currentUserAdminStatus, password } = req.body;
 
-    if (id === currentUserId || currentUserAdminStatus) {
+    if (id === _id || currentUserAdminStatus) {
         try {
 
             if (password) {
@@ -40,12 +40,17 @@ export const updateUser = async (req, res) => {
             }
 
             const user = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
-            res.status(200).json(user);
+            const token = jwt.sign({
+                username: newRegisteredUser.username,
+                id: newRegisteredUser._id
+            }, process.env.JWT_PKEY, { expiresIn: '1h' })
+
+            res.status(200).json({user, token});
 
         } catch (error) {
             res.status(404).json(error);
         }
-    }else {
+    } else {
         res.status(403).json("Action denied. You have no permission to update this user");
     }
 }
@@ -63,16 +68,16 @@ export const deleteUser = async (req, res) => {
         } catch (error) {
             res.status(500).json(error);
         }
-    }else{
+    } else {
         res.status(403).json("Action denied. You have no permission to delete this user");
     }
 }
 
 
-export const followUser = async (req,res) => {
+export const followUser = async (req, res) => {
     const id = req.params.id;
 
-    const {currentUserId} = req.body;
+    const { currentUserId } = req.body;
     if (id === currentUserId) {
         res.status(403).json("Action denied.")
     }
@@ -81,24 +86,24 @@ export const followUser = async (req,res) => {
         const userFollowed = await UserModel.findById(id);
         const userFollowing = await UserModel.findById(currentUserId);
 
-        if(!userFollowed.followers.includes(currentUserId)){
-            await userFollowed.updateOne({$push : {followers: currentUserId}});
-            await userFollowing.updateOne({$push : {followings: id}});
+        if (!userFollowed.followers.includes(currentUserId)) {
+            await userFollowed.updateOne({ $push: { followers: currentUserId } });
+            await userFollowing.updateOne({ $push: { followings: id } });
             res.status(200).json(`${userFollowed.username} followed`);
-        }else{
+        } else {
             res.status(403).json(`You are already following ${userFollowed.username}`)
         }
-        
+
     } catch (error) {
-        res.status(500).json(error);   
+        res.status(500).json(error);
     }
 }
 
 
-export const unfollowUser = async (req,res) => {
+export const unfollowUser = async (req, res) => {
     const id = req.params.id;
 
-    const {currentUserId} = req.body;
+    const { currentUserId } = req.body;
     if (id === currentUserId) {
         res.status(403).json("Action denied.")
     }
@@ -107,16 +112,16 @@ export const unfollowUser = async (req,res) => {
         const userUnfollowed = await UserModel.findById(id);
         const userUnfollowing = await UserModel.findById(currentUserId);
 
-        if(userUnfollowed.followers.includes(currentUserId)){
-            await userUnfollowed.updateOne({$pull : {followers: currentUserId}});
-            await userUnfollowing.updateOne({$pull : {followings: id}});
+        if (userUnfollowed.followers.includes(currentUserId)) {
+            await userUnfollowed.updateOne({ $pull: { followers: currentUserId } });
+            await userUnfollowing.updateOne({ $pull: { followings: id } });
             res.status(200).json(`${userUnfollowed.username} unfollowed`);
-        }else{
+        } else {
             res.status(403).json(`You are not following ${userUnfollowed.username}`)
         }
-        
+
     } catch (error) {
-        res.status(500).json(error);   
+        res.status(500).json(error);
     }
 }
 

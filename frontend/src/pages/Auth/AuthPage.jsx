@@ -1,7 +1,6 @@
 import React from 'react'
 import './AuthPage.css'
 import Logo from '../../img/logo1.png'
-import { useForm } from 'react-hook-form';
 
 
 
