@@ -22,7 +22,7 @@ const ProfileCard = ({onProfilePage}) => {
 
       <div className='profile-name'>
         <span>{user.firstName} {user.lastName}</span>
-        <span>Senior Software Engineer</span>
+        <span>{user?.jobTitle}</span>
       </div>
 
       <div className='follow-status'>

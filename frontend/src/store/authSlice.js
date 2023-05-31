@@ -15,9 +15,7 @@ export const authSlice = createSlice({
       state.error = false;
     },
     authSuccess(state, action) {
-      console.log(action);
       localStorage.setItem("profile", JSON.stringify(action.payload))
-      // console.log(action.payload);
       state.authData = action.payload;
       state.loading = false;
       state.error = false;
@@ -31,6 +29,15 @@ export const authSlice = createSlice({
       state.authData = null;
       state.loading = false;
       state.error = false;
+    },
+    updateUser(state, action) {
+      localStorage.setItem('profile', JSON.stringify(action.payload))
+      state.authData = action.payload;
+      state.error = false;
+    },
+    updateFail(state) {
+      state.loading = false;
+      state.error = true;
     },
   },
 });
