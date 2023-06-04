@@ -27,16 +27,19 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
   const { user } = useSelector(state => state.auth.authData);
 
 
-  const handleProfileinfo = (data) => {
-    setFormData({ formData, ...data });
 
-    let user = formData;
+  const handleProfileinfo = (data) => {
+
+    setFormData({ ...formData, ...data });
+
+
+    let userData = formData;
     if (profilePicture) {
       const profileformData = new FormData();
       const fileName = Date.now() + profilePicture.name;
       profileformData.append("name", fileName);
       profileformData.append("file", profilePicture);
-      user.profilePicture = fileName;
+      userData.profilePicture = fileName;
       try {
         dispatch(uploadImage(profileformData))
       } catch (error) {
@@ -45,11 +48,12 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
     }
 
     if (coverImage) {
+      console.log(coverImage);
       const profileformData = new FormData();
       const fileName = Date.now() + coverImage.name;
       profileformData.append("name", fileName);
       profileformData.append("file", coverImage);
-      user.coverImage = fileName;
+      userData.coverImage = fileName;
       try {
         dispatch(uploadImage(profileformData))
       } catch (error) {
@@ -57,7 +61,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
       }
     }
 
-    dispatch(updateUserProfileInfo(params.id, user));
+    dispatch(updateUserProfileInfo(params.id, userData));
     setModalOpened(false);
 
   }
@@ -109,7 +113,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
             })} />
             Cover Image
             {/* <input type="file" value={formData.coverPicture}  name='coverPicture' {...register('coverPicture')} /> */}
-            <input type="file" name='coverPicture' {...register('coverPicture', {
+            <input type="file" name='coverImage' {...register('coverImage', {
               onChange: handleImageChange
             })} />
           </div>

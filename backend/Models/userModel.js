@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema(
             default: false
         },
         profilePicture: String,
-        coverPicture: String,
+        coverImage: String,
         about: String,
         livesin: String,
         worksat: String,

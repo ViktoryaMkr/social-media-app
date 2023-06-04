@@ -29,25 +29,34 @@ export const getUser = async (req, res) => {
 export const updateUser = async (req, res) => {
     const id = req.params.id;
     const { _id, currentUserAdminStatus, password } = req.body;
+    console.log(_id +" : "+ id);
+    console.log(req.body);
 
     if (id === _id || currentUserAdminStatus) {
         try {
-
+            console.log("here 1");
+            console.log("here 2");
             if (password) {
-
                 const salt = await bcrypt.genSalt(10);
                 req.body.password = await bcrypt.hash(password, salt);
             }
+            console.log("here 3");
 
-            const user = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
+            console.log(req.body);
+            
+            const newRegisteredUser = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
+            console.log("here 4");
             const token = jwt.sign({
                 username: newRegisteredUser.username,
                 id: newRegisteredUser._id
             }, process.env.JWT_PKEY, { expiresIn: '1h' })
-
-            res.status(200).json({user, token});
+            
+            console.log("here 5");
+            res.status(200).json({newRegisteredUser, token});
+            console.log("here 6");
 
         } catch (error) {
+            console.log(error);
             res.status(404).json(error);
         }
     } else {
