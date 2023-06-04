@@ -5,7 +5,7 @@ import Notif from "../../img/noti.png";
 import Comment from "../../img/comment.png";
 import { UilSetting } from "@iconscout/react-unicons";
 import "./Navbar.css"
-import { Link } from 'react-router-dom';
+import { Link, Redirect  } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { auth } from '../../store/authSlice.js'
 
