@@ -22,8 +22,8 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
 
   const { password, ...other } = data;
   const [formData, setFormData] = useState(other);
-  const [profilePicture, setProfilePicture] = useState(null);
-  const [coverImage, setCoverImage] = useState(null);
+  const [profilePicture, setProfilePicture] = useState('');
+  const [coverImage, setCoverImage] = useState('');
   const { user } = useSelector(state => state.auth.authData);
 
 
@@ -45,6 +45,8 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
       } catch (error) {
         console.log(error);
       }
+    }else {
+      userData.profilePicture = null
     }
 
     if (coverImage) {
@@ -59,6 +61,8 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
       } catch (error) {
         console.log(error);
       }
+    }else {
+      userData.coverImage = null
     }
 
     dispatch(updateUserProfileInfo(params.id, userData));

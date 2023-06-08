@@ -17,8 +17,7 @@ const InfoCard = () => {
     const profileUserId = params.id;
     const [profileUser, setProfileUser] = useState();
 
-    const { newRegisteredUser } = useSelector(state => state.auth.authData);
-    const user = newRegisteredUser;
+    const { user } = useSelector(state => state.auth.authData);
 
 
     useEffect(() => {

@@ -11,14 +11,14 @@ import { likePost } from '../../../api/postRequest'
 const Post = ({ data }) => {
 
 
-    const {newRegisteredUser} = useSelector(state => state.auth.authData);
+    const {user} = useSelector(state => state.auth.authData);
 
-    const [liked, setLiked] = useState(data.likes.includes(newRegisteredUser._id));
+    const [liked, setLiked] = useState(data.likes.includes(user._id));
     const [likeNumber, setLikeNumber] = useState(data.likes.length);
 
     const handleLikes = () => {
         setLiked(prev => !prev);
-        likePost(data._id, newRegisteredUser._id);
+        likePost(data._id, user._id);
         // liked? setLiked(prev => prev - 1): setLiked(prev => prev + 1)
     }
 

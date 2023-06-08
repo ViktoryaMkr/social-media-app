@@ -22,12 +22,12 @@ export const registerUser = async(req, res)=> {
             return res.status(400).json("Username already taken");
         }
 
-        const newRegisteredUser = await newUser.save()
+        const user = await newUser.save()
         const token = jwt.sign({
-            username: newRegisteredUser.username,
-            id: newRegisteredUser._id
+            username: user.username,
+            id: user._id
         }, process.env.JWT_PKEY , {expiresIn: '1h'})
-        res.status(200).json({newRegisteredUser, token})
+        res.status(200).json({user, token})
 
     } catch (error) {
         res.status(500).json({message:error.message})

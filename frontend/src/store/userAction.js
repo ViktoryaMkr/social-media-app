@@ -13,3 +13,14 @@ export const updateUserProfileInfo = (id, formData) => async(dispatch)=>{
     }
 }
 
+export const followUser = (id, data) => async(dispatch)=>{
+    // dispatch(auth.followUser(data));
+    userApi.followUser(id, data)
+
+}
+export const unfollowUser = (id, data) => async(dispatch)=>{
+    // dispatch(auth.unfollowUser(data));
+    userApi.unfollowUser(id, data)
+
+}
+
