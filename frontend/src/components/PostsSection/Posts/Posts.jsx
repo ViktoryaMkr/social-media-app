@@ -9,12 +9,12 @@ import { getTimelinePosts } from '../../../store/postAction'
 const Posts = () => {
 
   const dispatch = useDispatch();
-  const {newRegisteredUser} = useSelector(state => state.auth.authData);
+  const {user} = useSelector(state => state.auth.authData);
   const posts = useSelector(state=> state.post.postData);
   console.log(posts); 
 
   useEffect(() => {
-    dispatch(getTimelinePosts(newRegisteredUser._id));
+    dispatch(getTimelinePosts(user._id));
   }, [])
 
   // useEffect(() => {

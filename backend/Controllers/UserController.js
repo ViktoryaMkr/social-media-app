@@ -24,6 +24,21 @@ export const getUser = async (req, res) => {
     }
 }
 
+export const getAllUsers = async (req, res) => {
+    try {
+        let users = await UserModel.find();
+
+        users = users.map((user) => {
+            const {password, ...data} = user._doc;
+            return data
+        })
+        res.status(200).json(users);
+        
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 
 // update user
 export const updateUser = async (req, res) => {
@@ -44,15 +59,15 @@ export const updateUser = async (req, res) => {
 
             console.log(req.body);
             
-            const newRegisteredUser = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
+            const user = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
             console.log("here 4");
             const token = jwt.sign({
-                username: newRegisteredUser.username,
-                id: newRegisteredUser._id
+                username: user.username,
+                id: user._id
             }, process.env.JWT_PKEY, { expiresIn: '1h' })
             
             console.log("here 5");
-            res.status(200).json({newRegisteredUser, token});
+            res.status(200).json({user, token});
             console.log("here 6");
 
         } catch (error) {
@@ -86,17 +101,17 @@ export const deleteUser = async (req, res) => {
 export const followUser = async (req, res) => {
     const id = req.params.id;
 
-    const { currentUserId } = req.body;
-    if (id === currentUserId) {
+    const { _id } = req.body;
+    if (id === _id) {
         res.status(403).json("Action denied.")
     }
 
     try {
         const userFollowed = await UserModel.findById(id);
-        const userFollowing = await UserModel.findById(currentUserId);
+        const userFollowing = await UserModel.findById(_id);
 
-        if (!userFollowed.followers.includes(currentUserId)) {
-            await userFollowed.updateOne({ $push: { followers: currentUserId } });
+        if (!userFollowed.followers.includes(_id)) {
+            await userFollowed.updateOne({ $push: { followers: _id } });
             await userFollowing.updateOne({ $push: { followings: id } });
             res.status(200).json(`${userFollowed.username} followed`);
         } else {
@@ -112,21 +127,21 @@ export const followUser = async (req, res) => {
 export const unfollowUser = async (req, res) => {
     const id = req.params.id;
 
-    const { currentUserId } = req.body;
-    if (id === currentUserId) {
+    const { _id } = req.body;
+    if (id === _id) {
         res.status(403).json("Action denied.")
     }
 
     try {
         const userUnfollowed = await UserModel.findById(id);
-        const userUnfollowing = await UserModel.findById(currentUserId);
+        const userUnfollowing = await UserModel.findById(_id);
 
-        if (userUnfollowed.followers.includes(currentUserId)) {
-            await userUnfollowed.updateOne({ $pull: { followers: currentUserId } });
+        if (userUnfollowed.followers.includes(_id)) {
+            await userUnfollowed.updateOne({ $pull: { followers: _id } });
             await userUnfollowing.updateOne({ $pull: { followings: id } });
             res.status(200).json(`${userUnfollowed.username} unfollowed`);
         } else {
-            res.status(403).json(`You are not following ${userUnfollowed.username}`)
+            res.status(403).json(`You already unfollowed ${userUnfollowed.username}`)
         }
 
     } catch (error) {

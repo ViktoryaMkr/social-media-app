@@ -15,7 +15,7 @@ const SharePost = () => {
     const imageRef = useRef();
     const postDescription = useRef();
     const [image, setImage] = useState(null);
-    const { newRegisteredUser }  = useSelector(state => state.auth.authData);
+    const { user }  = useSelector(state => state.auth.authData);
     const publicFolder = process.env.REACT_APP_PUB;
 
 
@@ -35,7 +35,7 @@ const SharePost = () => {
         e.preventDefault();
 
         const newPost = {
-            userId : newRegisteredUser._id,
+            userId : user._id,
             description: postDescription.current.value
         }
 
@@ -61,7 +61,7 @@ const SharePost = () => {
 
     return (
         <div className='share-post'>
-            <img src={newRegisteredUser?.profilePicture? publicFolder + newRegisteredUser.profilePicture : defaultUserImg } alt="" />
+            <img src={user?.profilePicture? publicFolder + user.profilePicture : defaultUserImg } alt="" />
             <div>
                 <input type='text' placeholder='Username Express yourself' required ref={postDescription}/>
                 <div className='post-options'>

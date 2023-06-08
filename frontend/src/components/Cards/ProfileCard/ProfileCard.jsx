@@ -10,32 +10,32 @@ import { Link } from 'react-router-dom';
 
 const ProfileCard = ({onProfilePage}) => {
 
-  const {newRegisteredUser} = useSelector((state) => state.auth.authData)
+  const { user } = useSelector((state) => state.auth.authData)
   const posts = useSelector(state => state.post.postData);
   const publicFolder = process.env.REACT_APP_PUB;
-  console.log(newRegisteredUser);
+  console.log(user);
   return (
     <div className='profile-card'>
       <div className='profile-images'>
-        <img src={newRegisteredUser.coverImage? publicFolder + newRegisteredUser.coverImage : defaultCoverImg } alt="" height='120px' />
-        <img src={newRegisteredUser.profilePicture? publicFolder + newRegisteredUser.profilePicture : defaultUserImg } alt="" />
+        <img src={user.coverImage? publicFolder + user.coverImage : defaultCoverImg } alt="" height='120px' />
+        <img src={user.profilePicture? publicFolder + user.profilePicture : defaultUserImg } alt="" />
       </div>
 
       <div className='profile-name'>
-        <span>{newRegisteredUser.firstName} {newRegisteredUser.lastName}</span>
-        <span>{newRegisteredUser?.jobTitle}</span>
+        <span>{user.firstName} {user.lastName}</span>
+        <span>{user?.jobTitle}</span>
       </div>
 
       <div className='follow-status'>
         <hr />
         <div>
           <div className='followers'>
-            <span>{newRegisteredUser.followings.length}</span>
+            <span>{user.followings.length}</span>
             <span>Following </span>
           </div>
           <div className='vertical-line'></div>
           <div className='following'>
-            <span>{newRegisteredUser.followers.length}</span>
+            <span>{user.followers.length}</span>
             <span>Followers</span>
           </div>
 
@@ -43,7 +43,7 @@ const ProfileCard = ({onProfilePage}) => {
             <>
               <div className='vertical-line'></div>
               <div className='following'>
-                <span>{posts.filter((post)=> post.userId === newRegisteredUser._id).length} </span>
+                <span>{posts.filter((post)=> post.userId === user._id).length} </span>
                 <span>Posts</span>
               </div>
             </>
@@ -52,8 +52,8 @@ const ProfileCard = ({onProfilePage}) => {
         <hr />
       </div>
       {onProfilePage? '' : <span>
-        <Link to = {`/profile/${newRegisteredUser._id}`} style={{ textDecoration: "none", color: 'inherit'}}>
-        My profile
+        <Link to = {`/profile/${user._id}`} style={{ textDecoration: "none", color: 'inherit'}}>
+         My profile
         </Link>
       </span>}
     </div>
